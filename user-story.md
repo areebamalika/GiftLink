@@ -12,17 +12,26 @@ Create an Item Listing
 
 ## Acceptance Criteria
 
-- The user must be logged in to create an item listing.
-- The user can enter the item title.
-- The user can enter a description of the item.
-- The user can provide the item's category.
-- The user can provide the item's location.
-- The user can submit the listing.
-- The new item should be stored in MongoDB.
-- The newly created item should be displayed in the available item listings.
+### Scenario 1: Registered user creates an item listing
 
-## Priority
-High
+**Given** I am a registered and logged-in user
 
-## Status
-Completed
+**When** I enter the item title, description, category, and location and submit the listing
+
+**Then** the item should be saved in the database and displayed in the available item listings.
+
+### Scenario 2: User must be logged in
+
+**Given** I am not logged in
+
+**When** I try to create an item listing
+
+**Then** I should be asked to log in before creating the listing.
+
+### Scenario 3: Required information
+
+**Given** I am logged in and creating an item listing
+
+**When** I submit the listing without the required item information
+
+**Then** the system should display a validation message and should not create the listing.
